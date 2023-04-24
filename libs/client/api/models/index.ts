@@ -1,7 +1,0 @@
-export * from './licenses_serviceId_body'
-export * from './v1alphaCheckPermissionRequest'
-export * from './v1alphaCheckPermissionResponse'
-export * from './v1alphaGetLicenseResponse'
-export * from './v1alphaGetSeatsResponse'
-export * from './v1alphaGetSeatsUserRepresentation'
-export * from './v1alphaModifySeatsResponse'

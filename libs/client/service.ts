@@ -1,5 +1,5 @@
-import { MockService } from "./api/mock-service";
-import { CiamAuthz } from "./api/ciam-service";
+import { MockService } from "./mock-service";
+import { CiamAuthz } from "./ciam-service";
 import { EntitlementsService } from "./entitlements-api/entitlements-service";
 
 export type License = {

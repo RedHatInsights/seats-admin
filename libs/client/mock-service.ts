@@ -1,4 +1,4 @@
-import { AuthenticatedUser, License, LicenseService, User } from "../service";
+import { AuthenticatedUser, License, LicenseService, User } from "./service";
 
 type MockUser = {
   username: string;

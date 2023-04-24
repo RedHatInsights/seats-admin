@@ -1,10 +1,10 @@
 import { FetchRequestAdapter } from "@microsoft/kiota-http-fetchlibrary";
 import { AnonymousAuthenticationProvider } from "@microsoft/kiota-abstractions";
 
-import { CheckRequestBuilderPostRequestConfiguration } from "./v1alpha/check/checkRequestBuilderPostRequestConfiguration";
-import { AuthenticatedUser, License, LicenseService, User } from "../service";
-import { Licenses_serviceId_body } from "./models";
-import { Authz } from "./authz";
+import { CheckRequestBuilderPostRequestConfiguration } from "./api/v1alpha/check/checkRequestBuilderPostRequestConfiguration";
+import { AuthenticatedUser, License, LicenseService, User } from "./service";
+import { Licenses_serviceId_body } from "./api/models";
+import { Authz } from "./api/authz";
 
 export class CiamAuthz implements LicenseService {
   private client: Authz;

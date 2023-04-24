@@ -14,6 +14,7 @@
     }
   },
   "scripts": {
+    "postinstall": "node kiota-gen.js",
     "build": "wireit"
   },
   "wireit": {
@@ -34,6 +35,12 @@
   "dependencies": {
     "@microsoft/kiota-abstractions": "1.0.0-preview.14",
     "@microsoft/kiota-http-fetchlibrary": "^1.0.0-preview.15",
-    "@microsoft/kiota-serialization-json": "^1.0.0-preview.15"
+    "@microsoft/kiota-serialization-form": "^1.0.0-preview.6",
+    "@microsoft/kiota-serialization-json": "^1.0.0-preview.15",
+    "@microsoft/kiota-serialization-text": "^1.0.0-preview.14"
+  },
+  "devDependencies": {
+    "decompress": "^4.2.1",
+    "follow-redirects": "^1.15.2"
   }
 }

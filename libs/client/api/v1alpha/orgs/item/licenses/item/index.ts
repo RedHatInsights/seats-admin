@@ -1,6 +1,0 @@
-export * from './v1alphaGetLicenseResponse401Error'
-export * from './v1alphaGetLicenseResponse403Error'
-export * from './v1alphaGetLicenseResponse500Error'
-export * from './v1alphaModifySeatsResponse401Error'
-export * from './v1alphaModifySeatsResponse403Error'
-export * from './v1alphaModifySeatsResponse500Error'
