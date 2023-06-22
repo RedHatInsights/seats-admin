@@ -29,4 +29,4 @@ jobs:
     - name: build
       run: |
         npm ci
-        npm run build --workspace=standalone
+        npm run build

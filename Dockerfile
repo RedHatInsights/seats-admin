@@ -3,7 +3,7 @@ USER root
 WORKDIR /app
 COPY . .
 RUN npm ci
-RUN npm run build --workspace=standalone
+RUN npm run build
 
 FROM registry.access.redhat.com/ubi9/nginx-120 as production
 ENV NODE_ENV production
