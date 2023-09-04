@@ -20,11 +20,11 @@ export const EmptyStateNoAssignedSeat: VoidFunctionComponent<
     <EmptyState isFullHeight={true}>
       <EmptyStateIcon icon={PlusCircleIcon} />
       <Title headingLevel="h2" size="lg">
-        There are currently no users in your organization assigned Ansible
-        Lightspeed with Watson Code Assistant seats.
+        Your organization has {totalSeats} Ansible Lightspeed with IBM watsonx
+        Code Assistant
         <br />
-        Your organization has {totalSeats} Ansible Lightspeed with Watson Code
-        Assistant seats available.
+        seats available, but currently there are no users assigned to these
+        seats.
       </Title>
       <EmptyStateBody>
         Please add users by using the button below.

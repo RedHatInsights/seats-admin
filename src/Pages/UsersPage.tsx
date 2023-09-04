@@ -94,7 +94,7 @@ export const UsersPage = ({
         <PageSection style={{ paddingBottom: 0 }}>
           <Alert
             title={
-              "There are 0 seats left in your organization's subscription. Contact Red Hat to manage your Ansible Lightspeed with Watson Code Assistant license."
+              "There are 0 seats left in your organization's subscription. Contact Red Hat to manage your Ansible Lightspeed with IBM watsonx Code Assistant license."
             }
             variant="warning"
             actionClose={

@@ -19,12 +19,13 @@ export const EmptyStateNoSubscription: VoidFunctionComponent = () => {
     <EmptyState isFullHeight={true}>
       <EmptyStateIcon component={DangerIcon} variant={'container'} />
       <Title headingLevel="h2" size="lg">
-        Your organization no longer has an Ansible Lightspeed with Watson Code
-        Assistant subscription.
+        Your organization no longer has an Ansible Lightspeed with IBM watsonx
+        Code Assistant subscription.
       </Title>
       <EmptyStateBody>
         Please contact Red Hat if there is an issue with your subscription or if
-        you wish to continue.
+        you wish to continue to use of your Ansible Lightspeed with IBM watsonx
+        Code Assistant
       </EmptyStateBody>
     </EmptyState>
   );

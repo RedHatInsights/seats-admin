@@ -22,7 +22,7 @@ const RemoveUsersModal: VoidFunctionComponent<RemoveUsersModalProps> = ({
       id="remove-users-modal"
       variant={ModalVariant.small}
       isOpen
-      aria-label="Remove users from Ansible Lightspeed with Watson Code Assistant"
+      aria-label="Remove users from Ansible Lightspeed with IBM watsonx Code Assistant"
       header={
         <Title headingLevel="h1" style={{ display: 'flex' }}>
           <ExclamationTriangleIcon
@@ -30,7 +30,8 @@ const RemoveUsersModal: VoidFunctionComponent<RemoveUsersModalProps> = ({
             style={{ color: 'var(--pf-global--warning-color--100)' }}
           />
           <span className="pf-u-ml-md">
-            Remove users from Ansible Lightspeed with Watson Code Assistant.
+            Remove users from Ansible Lightspeed with IBM watsonx Code
+            Assistant.
           </span>
         </Title>
       }
@@ -43,9 +44,9 @@ const RemoveUsersModal: VoidFunctionComponent<RemoveUsersModalProps> = ({
       ]}
     >
       Your organization has reduced the number of users in Opt in to Ansible
-      Lightspeed with Watson Code Assistant to {usersToRemove}. Please remove{' '}
-      {usersToRemove} users to continue using the Opt in to Ansible Lightspeed
-      with Watson Code Assistant subscription.
+      Lightspeed with IBM watsonx Code Assistant to {usersToRemove}. Please
+      remove {usersToRemove} users to continue using the Opt in to Ansible
+      Lightspeed with IBM watsonx Code Assistant subscription.
     </Modal>
   );
 };

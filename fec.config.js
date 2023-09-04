@@ -1,7 +1,7 @@
 const Dotenv = require('dotenv-webpack');
 
 module.exports = {
-  appUrl: '/ansible/seats',
+  appUrl: '/ansible/seats-administration',
   debug: true,
   useProxy: true,
   proxyVerbose: true,

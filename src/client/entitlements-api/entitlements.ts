@@ -47,7 +47,7 @@ export class EntitlementsService implements LicenseService {
         {
           limit: pagination.perPage,
           offset: (pagination.page - 1) * pagination.perPage,
-          excludeStatus: ['Deprovisioned'],
+          status: ['Active'],
         },
         await this.requestHeader(user)
       );

@@ -48,7 +48,7 @@ export const ConfirmRemoveDialog = ({
       variant="small"
       actions={[
         <Button key="remove" variant="danger" onClick={() => onConfirm()}>
-          Remove users
+          Remove user{users.length > 1 ? 's' : ''}
         </Button>,
         <Button key="cancel" variant="link" onClick={() => onCancel()}>
           Cancel
@@ -57,7 +57,7 @@ export const ConfirmRemoveDialog = ({
       onClose={onCancel}
     >
       Are you sure you want to remove the user(s) below from Ansible Lightspeed
-      with Watson Code Assistant?
+      with IBM watsonx Code Assistant?
       {users.length > 1 ? (
         <>
           <TableComposable variant="compact">

@@ -28,7 +28,7 @@ export const AddUsersHeader: VoidFunctionComponent<AddUsersHeaderProps> = ({
         <Breadcrumb className={'pf-u-pb-md'}>
           <BreadcrumbItem>
             <AppLink to={'/'}>
-              Ansible Lightspeed with Watson Code Assistant
+              Ansible Lightspeed with IBM watsonx Code Assistant
             </AppLink>
           </BreadcrumbItem>
           <BreadcrumbItem>Add user(s)</BreadcrumbItem>

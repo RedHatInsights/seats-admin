@@ -26,7 +26,7 @@ export const RemoveUsersHeader: VoidFunctionComponent<
         <Breadcrumb className={'pf-u-pb-md'}>
           <BreadcrumbItem>
             <AppLink to={'/'}>
-              Ansible Lightspeed with Watson Code Assistant
+              Ansible Lightspeed with IBM watsonx Code Assistant
             </AppLink>
           </BreadcrumbItem>
           <BreadcrumbItem>Remove users</BreadcrumbItem>

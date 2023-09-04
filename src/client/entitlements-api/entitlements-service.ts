@@ -4,159 +4,224 @@
  * DO NOT MODIFY - This file has been generated using oazapfts.
  * See https://www.npmjs.com/package/oazapfts
  */
-import * as Oazapfts from "oazapfts/lib/runtime";
-import * as QS from "oazapfts/lib/runtime/query";
+import * as Oazapfts from 'oazapfts/lib/runtime';
+import * as QS from 'oazapfts/lib/runtime/query';
 export const defaults: Oazapfts.RequestOpts = {
-    baseUrl: "/api/entitlements/v1/",
+  baseUrl: '/api/entitlements/v1/',
 };
 const oazapfts = Oazapfts.runtime(defaults);
 export const servers = {
-    localEntitlementsApi: "/api/entitlements/v1/",
-    prodEntitlementsApi: "https://cloud.redhat.com/api/entitlements/v1/"
+  localEntitlementsApi: '/api/entitlements/v1/',
+  prodEntitlementsApi: 'https://cloud.redhat.com/api/entitlements/v1/',
 };
 export type ServiceDetails = {
-    is_entitled?: boolean;
-    is_trial?: boolean;
+  is_entitled?: boolean;
+  is_trial?: boolean;
 };
 export type Service = {
-    [key: string]: ServiceDetails;
+  [key: string]: ServiceDetails;
 };
 export type PaginationMeta = {
-    count?: number;
+  count?: number;
 };
 export type PaginationLinks = {
-    first?: string;
-    previous?: string;
-    next?: string;
-    last?: string;
+  first?: string;
+  previous?: string;
+  next?: string;
+  last?: string;
 };
 export type ListPagination = {
-    meta?: PaginationMeta;
-    links?: PaginationLinks;
+  meta?: PaginationMeta;
+  links?: PaginationLinks;
 };
 export type Seat = {
-    subscription_id?: string;
-    account_username?: string;
-    status?: string;
-    first_name?: string;
-    last_name?: string;
+  subscription_id?: string;
+  account_username?: string;
+  status?: string;
+  first_name?: string;
+  last_name?: string;
 };
 export type ListSeatsResponsePagination = ListPagination & {
-    data: Seat[];
-    allowed?: number;
-    consumed?: number;
+  data: Seat[];
+  allowed?: number;
+  consumed?: number;
 };
 export type Error = {
-    error?: string;
+  error?: string;
 };
 export type SeatRequest = {
-    account_username: string;
+  account_username: string;
 };
 export type ComplianceScreeningResponse = {
-    result?: "OK" | "ERROR_T5" | "ERROR_OFAC" | "ERROR_EXPORT_CONTROL";
-    description?: string;
+  result?: 'OK' | 'ERROR_T5' | 'ERROR_OFAC' | 'ERROR_EXPORT_CONTROL';
+  description?: string;
 };
 export type ComplianceScreeningErrorResponse = {
-    errors?: {
-        error?: string;
-        identityType?: string;
-        identity?: string;
-    }[];
+  errors?: {
+    error?: string;
+    identityType?: string;
+    identity?: string;
+  }[];
 };
 export type DependencyErrorDetails = {
-    dependency_failure?: boolean;
-    service?: string;
-    status?: number;
-    endpoint?: string;
-    message?: string;
+  dependency_failure?: boolean;
+  service?: string;
+  status?: number;
+  endpoint?: string;
+  message?: string;
 };
 export type DependencyErrorResponse = {
-    error?: {
-        [key: string]: DependencyErrorDetails;
-    };
+  error?: {
+    [key: string]: DependencyErrorDetails;
+  };
 };
 /**
  * get a list of services a user is entitled to
  */
-export function getServices(opts?: Oazapfts.RequestOpts) {
-    return oazapfts.ok(oazapfts.fetchJson<{
-        status: 200;
-        data: Service;
-    } | {
-        status: 404;
-    }>("/services", {
-        ...opts
-    }));
+export function getServices(
+  {
+    includeBundles,
+    excludeBundles,
+  }: {
+    includeBundles?: string[];
+    excludeBundles?: string[];
+  } = {},
+  opts?: Oazapfts.RequestOpts
+) {
+  return oazapfts.ok(
+    oazapfts.fetchJson<
+      | {
+          status: 200;
+          data: Service;
+        }
+      | {
+          status: 404;
+        }
+    >(
+      `/services${QS.query(
+        QS.form({
+          include_bundles: includeBundles,
+          exclude_bundles: excludeBundles,
+        })
+      )}`,
+      {
+        ...opts,
+      }
+    )
+  );
 }
 /**
  * returns list of users occupying seats
  */
-export function getSeats({ excludeStatus, limit, offset }: {
-    excludeStatus?: ("Active" | "Deprovisioned")[];
+export function getSeats(
+  {
+    status,
+    excludeStatus,
+    limit,
+    offset,
+  }: {
+    status?: ('Active' | 'Deprovisioned')[];
+    excludeStatus?: ('Active' | 'Deprovisioned')[];
     limit?: number;
     offset?: number;
-} = {}, opts?: Oazapfts.RequestOpts) {
-    return oazapfts.ok(oazapfts.fetchJson<{
-        status: 200;
-        data: ListSeatsResponsePagination;
-    } | {
-        status: 500;
-        data: Error;
-    }>(`/seats${QS.query(QS.explode({
-        excludeStatus,
-        limit,
-        offset
-    }))}`, {
-        ...opts
-    }));
+  } = {},
+  opts?: Oazapfts.RequestOpts
+) {
+  return oazapfts.ok(
+    oazapfts.fetchJson<
+      | {
+          status: 200;
+          data: ListSeatsResponsePagination;
+        }
+      | {
+          status: 500;
+          data: Error;
+        }
+    >(
+      `/seats${QS.query(
+        QS.explode({
+          status,
+          excludeStatus,
+          limit,
+          offset,
+        })
+      )}`,
+      {
+        ...opts,
+      }
+    )
+  );
 }
 /**
  * assign a user to a seat
  */
-export function postSeats(seatRequest: SeatRequest, opts?: Oazapfts.RequestOpts) {
-    return oazapfts.ok(oazapfts.fetchJson<{
-        status: 200;
-        data: Seat;
-    } | {
-        status: 400;
-        data: Error;
-    }>("/seats", oazapfts.json({
+export function postSeats(
+  seatRequest: SeatRequest,
+  opts?: Oazapfts.RequestOpts
+) {
+  return oazapfts.ok(
+    oazapfts.fetchJson<
+      | {
+          status: 200;
+          data: Seat;
+        }
+      | {
+          status: 400;
+          data: Error;
+        }
+    >(
+      '/seats',
+      oazapfts.json({
         ...opts,
-        method: "POST",
-        body: seatRequest
-    })));
+        method: 'POST',
+        body: seatRequest,
+      })
+    )
+  );
 }
 /**
  * remove a user from a seat
  */
 export function deleteSeatsById(id: string, opts?: Oazapfts.RequestOpts) {
-    return oazapfts.ok(oazapfts.fetchJson<{
-        status: 204;
-    } | {
-        status: 400;
-        data: Error;
-    } | {
-        status: 403;
-        data: Error;
-    }>(`/seats/${encodeURIComponent(id)}`, {
-        ...opts,
-        method: "DELETE"
-    }));
+  return oazapfts.ok(
+    oazapfts.fetchJson<
+      | {
+          status: 204;
+        }
+      | {
+          status: 400;
+          data: Error;
+        }
+      | {
+          status: 403;
+          data: Error;
+        }
+    >(`/seats/${encodeURIComponent(id)}`, {
+      ...opts,
+      method: 'DELETE',
+    })
+  );
 }
 /**
  * verify exports compliance for a given user
  */
 export function getCompliance(opts?: Oazapfts.RequestOpts) {
-    return oazapfts.ok(oazapfts.fetchJson<{
-        status: 200;
-        data: ComplianceScreeningResponse;
-    } | {
-        status: 400;
-        data: ComplianceScreeningErrorResponse;
-    } | {
-        status: 500;
-        data: DependencyErrorResponse;
-    }>("/compliance", {
-        ...opts
-    }));
+  return oazapfts.ok(
+    oazapfts.fetchJson<
+      | {
+          status: 200;
+          data: ComplianceScreeningResponse;
+        }
+      | {
+          status: 400;
+          data: ComplianceScreeningErrorResponse;
+        }
+      | {
+          status: 500;
+          data: DependencyErrorResponse;
+        }
+    >('/compliance', {
+      ...opts,
+    })
+  );
 }

@@ -81,7 +81,7 @@ export const AddUsersPage = ({ user, onSuccess, onError }: PageParams) => {
         <Alert
           variant="warning"
           isInline
-          title="Your organization does not have enough Ansible Lightspeed with Watson Code Assistant seats available for the assignments below"
+          title={`Your organization has ${subscriptions.data?.total} Ansible Lightspeed with IBM watsonx Code Assistant seats only available for assignment. Please remove a few seat assignments in order to continue.`}
         />
       )}
       <UsersWithSeatTable
