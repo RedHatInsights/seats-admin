@@ -361,7 +361,7 @@ export const UsersWithSeatTable = ({
                   {row[column]}
                 </Td>
               ))}
-              {!isPicker && (
+              {!isPicker && canRemove && (
                 <Td isActionCell>
                   <ActionsColumn
                     items={[

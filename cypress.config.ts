@@ -5,7 +5,6 @@ const path = require("path");
 
 function getConfigurationByFile(file) {
   const pathToConfigFile = path.resolve("cypress/config", `${file}.env.json`);
-  // check if file exists
   if (!fs.existsSync(pathToConfigFile)) {
     throw new Error(`Config file ${pathToConfigFile} does not exist`);
   }

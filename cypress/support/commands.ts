@@ -37,9 +37,16 @@
 // }
 
 Cypress.Commands.add('login', (username) => {
+  let password = ""
+  if (username == "lightspeed-org-admin") {
+    password = Cypress.env('passwordAdmin')
+  } else {
+    password = Cypress.env('passwordUser')
+  }
+  
   cy.visit(Cypress.config('baseUrl'));
   cy.get('#username-verification', { timeout: 30000 }).should('be.visible').type(username);
   cy.get('#login-show-step2', { timeout: 30000 }).should('be.visible').click();
-  cy.get('#password', { timeout: 30000 }).should('be.visible').type(Cypress.env('password'));
+  cy.get('#password', { timeout: 30000 }).should('be.visible').type(password);
   cy.get('#rh-password-verification-submit-button').click();
 });

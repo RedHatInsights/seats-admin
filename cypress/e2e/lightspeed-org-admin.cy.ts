@@ -1,4 +1,4 @@
-describe('Navigate to the Seats Administration page as lightspeed-org-admin', () => {
+describe('Navigate to the Prod Seats Administration page as lightspeed-org-admin', () => {
   before(() => {
     cy.login('lightspeed-org-admin');
   });

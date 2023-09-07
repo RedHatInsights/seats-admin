@@ -27,3 +27,5 @@ coverage
 
 # cypress
 cypress/config
+cypress/videos
+cypress/screenshots
