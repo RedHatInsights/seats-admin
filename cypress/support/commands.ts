@@ -130,7 +130,7 @@ Cypress.Commands.add('filter_by', (option, value) => {
   cy.get('.pf-c-text-input-group__text-input').type(value + '{enter}')
   cy.get('@users_table').find(`tbody [data-label="${option}"]`).each(($e1, index, $list) => {
     expect($list).length(1)
-    expect($e1.text()).to.equal(value)
+    expect($e1.text()).to.equal(value.trim())
   })
 
   cy.get('[data-cy="users-table-toolbar"] > :nth-child(2) > :nth-child(2) > .pf-c-button').as('clear_filter');
